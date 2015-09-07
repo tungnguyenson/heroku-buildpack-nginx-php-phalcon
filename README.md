@@ -1,7 +1,6 @@
 # Heroku buildpack: PHP
 
-![php](https://cloud.githubusercontent.com/assets/51578/8882982/73ea501a-3219-11e5-8f87-311e6b8a86fc.jpg)
-
+![buildpack_banner_php](https://cloud.githubusercontent.com/assets/51578/8779887/b85660f2-2ed3-11e5-9545-5694626ac85e.jpg)
 
 This is the official [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for PHP applications.
 
@@ -60,3 +59,37 @@ If this works, run `bob deploy` instead of `bob build` to have the result upload
 To speed things up drastically, it'll usually be a good idea to `heroku run bash --size PX` instead.
 
 If the dependencies are not yet deployed, you can do so by e.g. running `bob deploy libraries/zlib`.
+
+
+## Build sequence
+
+Replace dependency version: 
+    Find: Build Deps: php\-5\.[0-9a-z\.]+
+    Replace: Build Deps: php-5.6.11
+
+Build & Deploy:
+
+bob deploy php
+bob deploy nginx
+bob deploy apache
+
+bob deploy libraries/zlib --overwrite
+bob deploy libraries/libmcrypt --overwrite
+bob deploy libraries/icu --overwrite
+bob deploy libraries/gettext --overwrite
+bob deploy libraries/pcre --overwrite
+bob deploy libraries/imagemagick --overwrite
+bob deploy libraries/libmemcached --overwrite
+
+bob deploy extensions/no-debug-non-zts-20131226/memcached-bare --overwrite
+bob deploy extensions/no-debug-non-zts-20131226/memcached --overwrite
+bob deploy extensions/no-debug-non-zts-20131226/redis --overwrite
+bob deploy extensions/no-debug-non-zts-20131226/mongo --overwrite
+
+bob deploy extensions/no-debug-non-zts-20131226/imagick-bare --overwrite
+bob deploy extensions/no-debug-non-zts-20131226/imagick --overwrite
+
+bob deploy extensions/no-debug-non-zts-20131226/phalcon --overwrite
+bob deploy extensions/no-debug-non-zts-20131226/newrelic --overwrite
+
+test2

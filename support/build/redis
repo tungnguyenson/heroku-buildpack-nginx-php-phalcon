@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Build Path: /app/.heroku/redis/
+
+OUT_PREFIX=$1
+
+# fail hard
+set -o pipefail
+# fail harder
+set -eux
+
+DEFAULT_VERSION="3.0.3"
+dep_version=${VERSION:-$DEFAULT_VERSION}
+dep_dirname=redis-${dep_version}
+dep_archive_name=${dep_dirname}.tar.gz
+dep_url=http://download.redis.io/releases/${dep_archive_name}
+
+echo "-----> Building Redis ${dep_version}..."
+
+curl -L ${dep_url} | tar xz
+
+pushd ${dep_dirname}
+
+make -s -j 9
+
+rm -rf ${OUT_PREFIX}/*
+cp src/redis-server ${OUT_PREFIX}
+cp src/redis-benchmark ${OUT_PREFIX}
+cp src/redis-cli ${OUT_PREFIX}
+cp src/redis-check-dump ${OUT_PREFIX}
+
+popd
+
+echo "-----> Done."

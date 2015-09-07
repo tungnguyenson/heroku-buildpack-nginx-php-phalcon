@@ -10,7 +10,7 @@ set -eux
 
 STACK=${STACK:-"cedar"}
 
-DEFAULT_VERSION="3.5.1"
+DEFAULT_VERSION="3.2.0"
 dep_version=${VERSION:-$DEFAULT_VERSION}
 dep_dirname=hhvm_${dep_version}
 if [[ $STACK == "cedar" ]]; then
@@ -26,8 +26,8 @@ mkdir -p $OUT_PREFIX
 
 if [[ $STACK == "cedar" ]]; then
     deps="${dep_url}
-http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu/pool/main/b/binutils/binutils_2.22-4ubuntu1~10.04.1_amd64.deb
-http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu/pool/main/g/gcc-4.8/libstdc++6_4.8.1-2ubuntu1~10.04.1_amd64.deb
+http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu/pool/main/b/binutils/binutils_2.22-4ubuntu1~10.10.1_amd64.deb
+http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu/pool/main/g/gcc-4.8/libstdc++6_4.8.1-2ubuntu1~10.10.1_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/universe/t/tbb/libtbb2_2.2+r009-1_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/universe/libo/libonig/libonig2_5.9.1-1_amd64.deb
 http://mirrors.kernel.org/ubuntu/pool/universe/libm/libmcrypt/libmcrypt4_2.5.8-3.1_amd64.deb

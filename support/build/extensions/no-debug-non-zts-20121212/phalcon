@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build Path: /app/.heroku/php/
-# Build Deps: php-5.6.12
+# Build Deps: php-5.6.11
 
 OUT_PREFIX=$1
 
@@ -9,7 +9,7 @@ set -o pipefail
 # fail harder
 set -eux
 
-DEFAULT_VERSION="2.0.7"
+DEFAULT_VERSION="1.3.4"
 dep_version=${VERSION:-$DEFAULT_VERSION}
 dep_url=https://github.com/phalcon/cphalcon/archive/phalcon-v${dep_version}.tar.gz
 

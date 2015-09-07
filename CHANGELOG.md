@@ -1,31 +1,5 @@
 # heroku-buildpack-php CHANGELOG
 
-## v75 (2015-08-21)
-
-### FIX
-
-- Prevent potential (benign) Python notice during builds
-
-## v74 (2015-08-21)
-
-### FIX
-
-- Warning about missing composer.lock is thrown incorrectly for some composer.json files
-
-## v72 (2015-08-21)
-
-### ADD
-
-- PHP/5.6.12 [David Zuelke]
-- PHP/5.5.28 [David Zuelke]
-- ext-newrelic/4.23.4.113 [David Zuelke]
-- PHP/7.0.0RC1 [David Zuelke]
-- Support custom `composer.json`/`composer.lock` file names via `$COMPOSER` env var [David Zuelke]
-
-### CHG
-
-- A composer.lock is now required if there is any entry in the "require" section of composer.json [David Zuelke]
-
 ## v71 (2015-07-14)
 
 ### ADD
