@@ -10,7 +10,7 @@ set -eux
 
 STACK=${STACK:-"cedar"}
 
-DEFAULT_VERSION="3.2.0"
+DEFAULT_VERSION="3.5.1"
 dep_version=${VERSION:-$DEFAULT_VERSION}
 dep_dirname=hhvm_${dep_version}
 if [[ $STACK == "cedar" ]]; then

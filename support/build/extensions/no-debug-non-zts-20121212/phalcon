@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Build Path: /app/.heroku/php/
+# Build Deps: php-5.6.12
+
+OUT_PREFIX=$1
+
+# fail hard
+set -o pipefail
+# fail harder
+set -eux
+
+DEFAULT_VERSION="2.0.7"
+dep_version=${VERSION:-$DEFAULT_VERSION}
+dep_url=https://github.com/phalcon/cphalcon/archive/phalcon-v${dep_version}.tar.gz
+
+echo "-----> Building ext/phalcon ${dep_version}..."
+
+curl -L ${dep_url} | tar -xz
+
+pushd cphalcon-phalcon-v${dep_version}/build/64bits
+export PATH=${OUT_PREFIX}/bin:${PATH}
+phpize
+./configure \
+    --prefix=${OUT_PREFIX} \
+    --enable-phalcon
+make -s -j 9
+# php was a build dep, and it's in $OUT_PREFIX. nuke that, then make install so all we're left with is the extension
+rm -rf ${OUT_PREFIX}/*
+make install -s
+
+popd
+
+echo "-----> Done."
