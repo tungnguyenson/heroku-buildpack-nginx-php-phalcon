@@ -66,7 +66,8 @@ BUILDPACK_BRANCH=${BUILDPACK_BRANCH:-master}
 if [[ "$BUILDPACK_BRANCH" != v* && "$BUILDPACK_BRANCH" != "master" ]]; then
     S3_URL="develop"
 fi
-S3_URL="https://lang-php.s3.amazonaws.com/dist-${STACK}-${S3_URL:-"master"}"
+#S3_URL="https://lang-php.s3.amazonaws.com/dist-${STACK}-${S3_URL:-"master"}"
+S3_URL="https://s3-ap-southeast-1.amazonaws.com/tungns-heroku/buildpack"
 RTVS_URL="https://php-runtime-version-selector.herokuapp.com"
 
 cd $BUILD_DIR
